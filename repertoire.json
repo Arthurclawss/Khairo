@@ -1,0 +1,31 @@
+{
+    "techniques": {
+        "direto_de_ruptura": {
+            "nome": "Direto de Ruptura",
+            "estilo": "Mat",
+            "dano": 15,
+            "custo_estamina": 12,
+            "recarga": 0.5,
+            "preparacao": 0.2,
+            "recuperacao": 0.3
+        },
+        "cruzado_curto": {
+            "nome": "Cruzado Curto",
+            "estilo": "Bouk",
+            "dano": 20,
+            "custo_estamina": 15,
+            "recarga": 0.6,
+            "preparacao": 0.25,
+            "recuperacao": 0.35
+        },
+        "teep_de_contencao": {
+            "nome": "Teep de Contenção",
+            "estilo": "Tae",
+            "dano": 10,
+            "custo_estamina": 10,
+            "recarga": 0.8,
+            "preparacao": 0.15,
+            "recuperacao": 0.4
+        }
+    }
+}

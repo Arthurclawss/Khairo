@@ -1,0 +1,11 @@
+{
+    "teep_de_contencao": {
+        "nome": "Teep de Contenção",
+        "estilo": "Tae",
+        "dano": 10,
+        "custo_estamina": 10,
+        "recarga": 0.8,
+        "preparacao": 0.15,
+        "recuperacao": 0.4
+    }
+}

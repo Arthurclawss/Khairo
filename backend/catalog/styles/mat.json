@@ -1,0 +1,11 @@
+{
+    "direto_de_ruptura": {
+        "nome": "Direto de Ruptura",
+        "estilo": "Mat",
+        "dano": 15,
+        "custo_estamina": 12,
+        "recarga": 0.5,
+        "preparacao": 0.2,
+        "recuperacao": 0.3
+    }
+}

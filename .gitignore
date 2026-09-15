@@ -1,0 +1,6 @@
+# Ignore saves
+data/save_data.json
+
+# Python
+__pycache__/
+*.pyc

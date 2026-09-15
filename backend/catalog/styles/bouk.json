@@ -1,0 +1,11 @@
+{
+    "cruzado_curto": {
+        "nome": "Cruzado Curto",
+        "estilo": "Bouk",
+        "dano": 20,
+        "custo_estamina": 15,
+        "recarga": 0.6,
+        "preparacao": 0.25,
+        "recuperacao": 0.35
+    }
+}
