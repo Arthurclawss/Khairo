@@ -1,6 +1,11 @@
 class_name FighterFSM
 extends Node
 
+## Máquina de estados finitos para o lutador.
+## Gerencia transições entre estados e garante o compromisso dos golpes.
+
+signal state_changed(old_state: State, new_state: State)
+
 enum State {
 	IDLE_MOVEMENT,   # Movimento Livre
 	BLOCKING,        # Bloqueio
@@ -15,18 +20,28 @@ var current_state: State = State.IDLE_MOVEMENT
 func _ready() -> void:
 	pass
 
+## Transição pública com regra de compromisso:
+## Durante um ataque, só permite transição para HIT_REACTION (interrupção por dano).
 func change_state(new_state: State) -> void:
-	# Lógica para garantir o compromisso dos golpes (não podem ser cancelados livremente)
 	if is_attacking() and new_state != State.HIT_REACTION:
-		# Só permite sair do estado de ataque se a animação/estado atual terminar
 		return
-		
-	_exit_state(current_state)
-	current_state = new_state
-	_enter_state(current_state)
+	_execute_change(new_state)
+
+## Transição forçada (sem verificação de compromisso).
+## Usada internamente pelo controller para avançar fases do ataque
+## (PREP → ACTIVE → RECOVERY → IDLE) e para transições controladas.
+func force_change_state(new_state: State) -> void:
+	_execute_change(new_state)
 
 func is_attacking() -> bool:
 	return current_state in [State.ATTACK_PREP, State.ATTACK_ACTIVE, State.ATTACK_RECOVERY]
+
+func _execute_change(new_state: State) -> void:
+	var old_state := current_state
+	_exit_state(current_state)
+	current_state = new_state
+	_enter_state(current_state)
+	state_changed.emit(old_state, new_state)
 
 func _enter_state(state: State) -> void:
 	match state:
@@ -49,3 +64,4 @@ func _exit_state(state: State) -> void:
 			pass # Desativa hitbox
 		State.BLOCKING:
 			pass # Desativa guarda
+
